@@ -15,10 +15,10 @@ class Canvas {
    * @param {Object} handlers Handlers to hook into events.
    * @param {Function} handlers.handleClick Handles the click event on the Canvas.
    */
-  constructor(canvasSelector, {handleClick}) {
+  constructor(canvasSelector, { handleClick }) {
     this.#canvasSelector = canvasSelector;
     this.#canvasElement = document.querySelector(canvasSelector);
-    this.#canvasContext = this.#canvasElement.getContext('2d');
+    this.#canvasContext = this.#canvasElement.getContext("2d");
 
     this.#handleClick = handleClick;
 
@@ -34,7 +34,7 @@ class Canvas {
     this.#canvasContext.drawImage(image, 0, 0);
 
     // eslint-disable-next-line new-cap
-    Caman(this.#canvasSelector, function() {
+    Caman(this.#canvasSelector, function () {
       this.posterize(5);
       this.render();
     });
@@ -44,14 +44,14 @@ class Canvas {
    * Toggles the canvas, making it visible.
    */
   toggleCanvas() {
-    this.#canvasElement.classList.toggle('canvas_display_none');
+    this.#canvasElement.classList.toggle("canvas_display_none");
   }
 
   /**
    * Sets the appropriate event listeners and attach handlers.
    */
   #setEventListeners() {
-    this.#canvasElement.addEventListener('click', this.#handleClick);
+    this.#canvasElement.addEventListener("click", this.#handleClick);
   }
 }
 

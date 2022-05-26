@@ -22,7 +22,7 @@
  * of control over the experience.
  */
 
-(function(window, document, undefined) {
+(function (window, document, undefined) {
   const classes = [];
 
   const tests = [];
@@ -37,12 +37,12 @@
 
   const ModernizrProto = {
     // The current version, dummy
-    _version: '3.6.0',
+    _version: "3.6.0",
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
     _config: {
-      classPrefix: '',
+      classPrefix: "",
       enableClasses: true,
       enableJSClass: true,
       usePrefixes: true,
@@ -52,7 +52,7 @@
     _q: [],
 
     // Stub these for people who are listening
-    on: function(test, cb) {
+    on: function (test, cb) {
       // I don't really think people should do this, but we can
       // safe guard it a bit.
       // -- NOTE:: this gets WAY overridden in src/addTest for actual async tests.
@@ -60,22 +60,22 @@
       // but the code to *disallow* sync tests in the real version of this
       // function is actually larger than this.
       const self = this;
-      setTimeout(function() {
+      setTimeout(function () {
         cb(self[test]);
       }, 0);
     },
 
-    addTest: function(name, fn, options) {
-      tests.push({name: name, fn: fn, options: options});
+    addTest: function (name, fn, options) {
+      tests.push({ name: name, fn: fn, options: options });
     },
 
-    addAsyncTest: function(fn) {
-      tests.push({name: null, fn: fn});
+    addAsyncTest: function (fn) {
+      tests.push({ name: null, fn: fn });
     },
   };
 
   // Fake some of Object.create so we can force non test results to be non "own" properties.
-  let Modernizr = function() {};
+  let Modernizr = function () {};
   Modernizr.prototype = ModernizrProto;
 
   // Leak modernizr globally when you `require` it rather than force it here.
@@ -100,8 +100,8 @@
   */
 
   Modernizr.addTest(
-      'getUserMedia',
-      'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices,
+    "getUserMedia",
+    "mediaDevices" in navigator && "getUserMedia" in navigator.mediaDevices
   );
 
   /**
@@ -158,14 +158,14 @@
               aliasIdx++
             ) {
               featureNames.push(
-                  feature.options.aliases[aliasIdx].toLowerCase(),
+                feature.options.aliases[aliasIdx].toLowerCase()
               );
             }
           }
         }
 
         // Run the test, or use the raw value if it's not a function
-        result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+        result = is(feature.fn, "function") ? feature.fn() : feature.fn;
 
         // Set each of the names on the Modernizr object
         for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
@@ -176,7 +176,7 @@
           //
           // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
           // hashtag famous last words
-          featureNameSplit = featureName.split('.');
+          featureNameSplit = featureName.split(".");
 
           if (featureNameSplit.length === 1) {
             Modernizr[featureNameSplit[0]] = result;
@@ -187,14 +187,14 @@
               !(Modernizr[featureNameSplit[0]] instanceof Boolean)
             ) {
               Modernizr[featureNameSplit[0]] = new Boolean(
-                  Modernizr[featureNameSplit[0]],
+                Modernizr[featureNameSplit[0]]
               );
             }
 
             Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
           }
 
-          classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
+          classes.push((result ? "" : "no-") + featureNameSplit.join("-"));
         }
       }
     }
@@ -215,7 +215,7 @@
    * @returns {boolean}
    */
 
-  const isSVG = docElement.nodeName.toLowerCase() === 'svg';
+  const isSVG = docElement.nodeName.toLowerCase() === "svg";
 
   /**
    * setClasses takes an array of class names and adds them to the root element
@@ -229,7 +229,7 @@
   //  ['no-webp', 'borderradius', ...]
   function setClasses(classes) {
     let className = docElement.className;
-    const classPrefix = Modernizr._config.classPrefix || '';
+    const classPrefix = Modernizr._config.classPrefix || "";
 
     if (isSVG) {
       className = className.baseVal;
@@ -238,13 +238,13 @@
     // Change `no-js` to `js` (independently of the `enableClasses` option)
     // Handle classPrefix on this too
     if (Modernizr._config.enableJSClass) {
-      const reJS = new RegExp('(^|\\s)' + classPrefix + 'no-js(\\s|$)');
-      className = className.replace(reJS, '$1' + classPrefix + 'js$2');
+      const reJS = new RegExp("(^|\\s)" + classPrefix + "no-js(\\s|$)");
+      className = className.replace(reJS, "$1" + classPrefix + "js$2");
     }
 
     if (Modernizr._config.enableClasses) {
       // Add the new classes
-      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      className += " " + classPrefix + classes.join(" " + classPrefix);
       if (isSVG) {
         docElement.className.baseVal = className;
       } else {

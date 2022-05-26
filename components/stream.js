@@ -13,8 +13,8 @@ class Stream {
    * @param {Object} handlers Handlers to hook into events.
    * @param {Function} handlers.handleCapture Handles the click event on the Video.
    */
-  constructor(streamSelector, {handleCapture}) {
-    this.#constraints = {audio: true, video: {height: 498, width: 497}};
+  constructor(streamSelector, { handleCapture }) {
+    this.#constraints = { audio: true, video: { height: 498, width: 497 } };
     this.#streamElement = document.querySelector(streamSelector);
 
     this.#handleCapture = handleCapture;
@@ -27,29 +27,29 @@ class Stream {
    */
   createStream() {
     navigator.mediaDevices
-        .getUserMedia(this.#constraints)
-        .then((mediaStream) => {
-          this.#streamElement.srcObject = mediaStream;
-        });
+      .getUserMedia(this.#constraints)
+      .then((mediaStream) => {
+        this.#streamElement.srcObject = mediaStream;
+      });
   }
 
   /**
    * Toggles the stream, making it visible.
    */
   toggleStream() {
-    this.#streamElement.classList.toggle('stream_display_none');
+    this.#streamElement.classList.toggle("stream_display_none");
   }
 
   /**
    * Sets the appropriate event listeners and attach handlers.
    */
   #setEventListeners() {
-    this.#streamElement.addEventListener('click', (event) =>
-      this.#handleCapture(event.target),
+    this.#streamElement.addEventListener("click", (event) =>
+      this.#handleCapture(event.target)
     );
 
-    this.#streamElement.addEventListener('loadedmetadata', () =>
-      this.#streamElement.play(),
+    this.#streamElement.addEventListener("loadedmetadata", () =>
+      this.#streamElement.play()
     );
   }
 }
