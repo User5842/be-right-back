@@ -15,7 +15,7 @@ const canvas = new Canvas(".canvas", {
 
 const { matches } = window.matchMedia("(min-width: 768px)");
 
-if (matches && Modernizr.getusermedia) {
+if (matches && "mediaDevices" in navigator) {
   const stream = new Stream(".stream", {
     handleCapture: (streamElement) => {
       audio.play();
