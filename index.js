@@ -13,7 +13,9 @@ const canvas = new Canvas(".canvas", {
   },
 });
 
-if (Modernizr.getusermedia) {
+const { matches } = window.matchMedia("(min-width: 768px)");
+
+if (matches && Modernizr.getusermedia) {
   const stream = new Stream(".stream", {
     handleCapture: (streamElement) => {
       audio.play();

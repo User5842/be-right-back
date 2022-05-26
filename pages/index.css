@@ -15,6 +15,11 @@
   margin: auto;
 }
 
+.page_section_support {
+  max-width: fit-content;
+  width: calc(100% - 40px);
+}
+
 .page__header {
   color: #e6edd0;
   font-family: Helvetica, sans-serif;
@@ -34,23 +39,27 @@
 
 .border__one {
   box-shadow: 5px 5px;
-  height: 600px;
-  width: 600px;
+  height: calc(100% - 140px);
+  width: calc(100% - 140px);
 }
 
 .border__two {
-  height: 550px;
-  width: 550px;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
 }
 
 #root {
-  height: 498px;
-  max-width: 497px;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
 }
 
 .canvas {
-  height: 466px;
   position: absolute;
+}
+
+#stream {
+  object-fit: fill;
+  width: 100%;
 }
 
 .canvas_display_none,
