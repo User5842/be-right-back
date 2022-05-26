@@ -7,16 +7,30 @@
   font-family: "Source Sans Pro", sans-serif;
   height: 100vh;
   margin: 0;
-  width: calc(100% - 40px);
+}
+
+.border__one,
+.border__two,
+#root {
+  border: 1rem solid #e46434;
+  display: flex;
+  margin: auto;
+}
+
+.border__one {
+  box-shadow: 5px 5px;
+  height: 600px;
+  width: 600px;
+}
+
+.border__two {
+  height: 550px;
+  width: 550px;
 }
 
 #root {
-  border: 2px solid black;
-  margin: auto;
-  max-width: fit-content;
-  min-width: 414px;
-  padding: 1rem;
-  position: relative;
+  height: 498px;
+  max-width: 497px;
 }
 
 .canvas {

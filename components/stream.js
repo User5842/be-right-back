@@ -5,7 +5,7 @@ class Stream {
   #handleCapture;
 
   constructor(streamSelector, { handleCapture }) {
-    this.#constraints = { audio: true, video: { height: 500, width: 500 } };
+    this.#constraints = { audio: true, video: { height: 498, width: 497 } };
     this.#streamElement = document.querySelector(streamSelector);
 
     this.#handleCapture = handleCapture;
