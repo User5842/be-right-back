@@ -10,14 +10,19 @@
   "license": "ISC",
   "author": "Rafael Negron <r.negron1@umiami.edu> (https://rafaeln.me)",
   "scripts": {
-    "build": "npm run lint && npm run format",
+    "build": "npm run lint && npm run lint:styles && npm run format",
+    "deploy": "surge",
     "format": "prettier --write .",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "lint:styles": "stylelint \"**/*.css\""
   },
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-google": "^0.14.0",
-    "prettier": "2.6.2"
+    "prettier": "2.6.2",
+    "stylelint": "^14.8.5",
+    "stylelint-config-standard": "^25.0.0",
+    "surge": "^0.23.1"
   },
   "private": true
 }
