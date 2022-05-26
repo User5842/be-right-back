@@ -18,6 +18,11 @@ const { matches } = window.matchMedia("(min-width: 768px)");
 if (matches && "mediaDevices" in navigator) {
   const stream = new Stream(".stream", {
     handleCapture: (streamElement) => {
+      if (!audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
       audio.play();
       canvas.draw(streamElement);
       canvas.toggleCanvas();

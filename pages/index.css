@@ -65,11 +65,6 @@
   width: 470px;
 }
 
-#stream {
-  object-fit: fill;
-  width: 100%;
-}
-
 .canvas_display_none,
 .stream_display_none {
   display: none;
