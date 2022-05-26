@@ -4,9 +4,20 @@
 
 .page {
   display: flex;
+  flex-direction: column;
   font-family: "Source Sans Pro", sans-serif;
   height: 100vh;
   margin: 0;
+}
+
+.page__header {
+  color: #e6edd0;
+  font-family: Helvetica, sans-serif;
+  font-size: 5rem;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: black 4px 4px 0px;
+  -webkit-text-stroke: 4px black;
 }
 
 .border__one,
@@ -34,7 +45,7 @@
 }
 
 .canvas {
-  left: 1rem;
+  height: 466px;
   position: absolute;
 }
 
