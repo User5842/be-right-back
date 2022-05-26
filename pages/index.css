@@ -5,17 +5,21 @@
 .page {
   display: flex;
   flex-direction: column;
-  font-family: "Source Sans Pro", sans-serif;
   height: 100vh;
   margin: 0;
+}
+
+.page__section {
+  display: none;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: auto;
 }
 
 .page__header {
   color: #e6edd0;
   font-family: Helvetica, sans-serif;
   font-size: 5rem;
-  margin-bottom: 0;
-  text-align: center;
+  margin-top: 0;
   text-shadow: black 4px 4px 0px;
   -webkit-text-stroke: 4px black;
 }

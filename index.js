@@ -1,16 +1,17 @@
-import Alert from "./components/alert.js";
 import Canvas from "./components/canvas.js";
-import Root from "./components/root.js";
 import Stream from "./components/stream.js";
+import { showSection } from "./utils/utils.js";
 
 const audio = new Audio("./files/be-right-back.mp3");
+
+const mainSection = document.querySelector(".page_section_main");
+const supportSection = document.querySelector(".page_section_support");
 
 const canvas = new Canvas(".canvas", {
   handleClick: () => {
     canvas.toggleCanvas();
   },
 });
-const root = new Root("#root");
 
 if (Modernizr.getusermedia) {
   const stream = new Stream(".stream", {
@@ -23,10 +24,8 @@ if (Modernizr.getusermedia) {
 
   stream.createStream();
   stream.toggleStream();
-} else {
-  const alert = new Alert(
-    "The device you're using does not support `getUserMedia.` Please try again on another device."
-  );
 
-  root.inject(alert.generateAlert());
+  showSection(mainSection);
+} else {
+  showSection(supportSection);
 }
