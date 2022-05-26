@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  display: flex;
+  font-family: "Source Sans Pro", sans-serif;
+  height: 100vh;
+  margin: 0;
+  width: calc(100% - 40px);
+}
+
+#root {
+  border: 2px solid black;
+  margin: auto;
+  max-width: fit-content;
+  min-width: 414px;
+  padding: 1rem;
+  position: relative;
+}
+
+.canvas {
+  left: 1rem;
+  position: absolute;
+}
+
+.canvas_display_none,
+.stream_display_none {
+  display: none;
+}
