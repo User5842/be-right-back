@@ -24,9 +24,14 @@
   color: #e6edd0;
   font-family: Helvetica, sans-serif;
   font-size: 5rem;
-  margin-top: 0;
+  margin: 0 0 1rem;
   text-shadow: black 4px 4px 0;
   -webkit-text-stroke: 4px black;
+}
+
+.page__description {
+  margin: 0 0 25px;
+  text-align: center;
 }
 
 .border__one,
@@ -49,14 +54,15 @@
 }
 
 #root {
+  cursor: pointer;
   height: calc(100% - 20px);
   width: calc(100% - 20px);
 }
 
 .canvas {
-  height: 477px;
+  height: 471px;
   position: absolute;
-  width: 475px;
+  width: 470px;
 }
 
 #stream {
